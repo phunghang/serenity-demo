@@ -12,13 +12,10 @@ buildscript {
         }
     }
     dependencies {
-<<<<<<< HEAD
         classpath "net.serenity-bdd:serenity-gradle-plugin:4.2.30"
         classpath "net.serenity-bdd:serenity-single-page-report:4.2.30"
-=======
         classpath "net.serenity-bdd:serenity-gradle-plugin:4.2.22"
         classpath "net.serenity-bdd:serenity-single-page-report:4.2.22"
->>>>>>> 18e6123f059f747e3b84b1e4921dbce759af8499
     }
 }
 
@@ -28,8 +25,10 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
 
-sourceCompatibility = 16
-targetCompatibility = 16
+java {
+    sourceCompatibility = 17
+    targetCompatibility = 17
+}
 
 ext {
     serenity_version = '4.3.2'
@@ -60,8 +59,21 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit()
+    systemProperties System.getProperties()
+    systemProperty 'environment', System.getProperty('environment', 'staging_chrome')
 }
+
+test.doFirst {
+    println "Running tests with environment: " + System.getProperty('environment')
+}
+
+
+aggregate {
+    System.setProperty('serenity.project.name', 'Orange HRM')
+    System.setProperty('report.subtitle', 'Hệ thống quanr lý nhân sự')
+}
+
 
 serenity {
     reports = ["single-page-html"]
