@@ -79,7 +79,6 @@ tasks.register('run_ci', Test) {
     systemProperty "cucumber.filter.tags", System.getProperty('tags') ? System.getProperty('tags'): "not @manual"
 
     // tắt auto gen báo cáo của serenity
-    setFinalizedBy([])
 }
 
 

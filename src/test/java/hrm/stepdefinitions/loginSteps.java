@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
@@ -16,6 +17,8 @@ import org.junit.Assert;
 
 public class loginSteps {
     Actor staff = Actor.named("Nhân viên");
+
+    @Managed(driver = "chrome")
 
     @Steps
     LoginPage loginPage;
