@@ -12,8 +12,6 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.serenity-bdd:serenity-gradle-plugin:4.2.30"
-        classpath "net.serenity-bdd:serenity-single-page-report:4.2.30"
         classpath "net.serenity-bdd:serenity-gradle-plugin:4.2.22"
         classpath "net.serenity-bdd:serenity-single-page-report:4.2.22"
     }
@@ -42,7 +40,6 @@ ext {
 }
 
 dependencies {
-    dependencies {
         testImplementation "net.serenity-bdd:serenity-core:${serenity_version}"
         testImplementation "net.serenity-bdd:serenity-cucumber:${serenity_version}"
         testImplementation "net.serenity-bdd:serenity-screenplay:${serenity_version}"
@@ -55,7 +52,6 @@ dependencies {
         testImplementation "org.junit.vintage:junit-vintage-engine:${junit_vintage_engine_version}"
         implementation "ch.qos.logback:logback-classic:${logback_classic_version}"
         testImplementation "org.assertj:assertj-core:${assertj_core_version}"
-    }
 }
 
 test {
@@ -85,10 +81,9 @@ aggregate {
     System.setProperty('report.subtitle', 'Hệ thống quanr lý nhân sự')
 }
 
-
 serenity {
     reports = ["single-page-html"]
 }
 gradle.startParameter.continueOnFailure = true
 
-test.finalizedBy(aggregate, reports)
+test.finalizedBy(aggregate)
