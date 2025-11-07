@@ -68,6 +68,20 @@ test.doFirst {
     println "Running tests with environment: " + System.getProperty('environment')
 }
 
+tasks.register('run_ci', Test) {
+    useJUnit()
+    systemProperties System.getProperties()
+    systemProperty 'environment', System.getProperty('environment', 'staging_chrome')
+//    maxParallelForks 5
+    filter {
+        includeTestsMatching '*Runner'
+    }
+    systemProperty "cucumber.filter.tags", System.getProperty('tags') ? System.getProperty('tags'): "not @manual"
+
+    // tắt auto gen báo cáo của serenity
+    setFinalizedBy([])
+}
+
 
 aggregate {
     System.setProperty('serenity.project.name', 'Orange HRM')
