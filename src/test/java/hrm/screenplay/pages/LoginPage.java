@@ -8,14 +8,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-@DefaultUrl("/auth/login")
+@DefaultUrl("/docs/tutorials/screenplay")
 public class LoginPage extends PageObject {
 
 
-    @WhenPageOpens
-    void waitUtilPageLoaded() {
-        this.waitFor(ExpectedConditions.elementToBeClickable(By.cssSelector(".orangehrm-login-button")));
-    }
+//    @WhenPageOpens
+//    void waitUtilPageLoaded() {
+//        this.waitFor(ExpectedConditions.elementToBeClickable(By.cssSelector(".orangehrm-login-button")));
+//    }
 
     @FindBy(css = ".orangehrm-login-button")
     public WebElementFacade BT_LOGIN;

@@ -7,16 +7,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.annotations.Steps;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.Open;
 import org.junit.Assert;
 
 
 public class loginSteps {
+
     Actor staff = Actor.named("Nhân viên");
 
     @Steps
@@ -27,6 +26,8 @@ public class loginSteps {
     @When("Truy cập trang {string}")
     public void openPage(String page) {
         staff.attemptsTo(OpenPage.toPage(page));
+
+//        staff.attemptsTo(Open.url("https://serenity-bdd.github.io/docs/reporting/the_serenity_reports"));
 
     }
 
