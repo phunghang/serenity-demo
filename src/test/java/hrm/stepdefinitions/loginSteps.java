@@ -26,9 +26,6 @@ public class loginSteps {
     @When("Truy cập trang {string}")
     public void openPage(String page) {
         staff.attemptsTo(OpenPage.toPage(page));
-
-//        staff.attemptsTo(Open.url("https://serenity-bdd.github.io/docs/reporting/the_serenity_reports"));
-
     }
 
     @And("Đăng nhập vào hệ thống bằng tài khoản {string}, mật khẩu {string}")
